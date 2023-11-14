@@ -2,18 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-.active {
-  @apply bg-teal-500 text-white rounded md:bg-transparent md:text-black md:rounded-none md:border-teal-500 md:border-b-2;
-}
-
-.navbar-link {
-  @apply block py-2 pl-3 pr-4 md:p-0 hover:md:border-b-2 hover:border-teal-500 transition;
-}
-
-.pagination-active {
-  @apply border-b-4 border-teal-500 text-teal-500;
-}
-
 .custom-loader {
   width: 100px;
   height: 100px;

@@ -2,26 +2,47 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+.active {
+  @apply bg-teal-500 text-white rounded md:bg-transparent md:text-black md:rounded-none md:border-teal-500 md:border-b-2;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+.navbar-link {
+  @apply block py-2 pl-3 pr-4 md:p-0 hover:md:border-b-2 hover:border-teal-500 transition;
+}
+
+.pagination-active {
+  @apply border-b-4 border-teal-500 text-teal-500;
+}
+
+.custom-loader {
+  width: 100px;
+  height: 100px;
+  display: grid;
+  border: 8px solid #0000;
+  border-radius: 50%;
+  border-color: #e4e4ed #0000;
+  animation: s6 1s infinite linear;
+}
+.custom-loader::before,
+.custom-loader::after {
+  content: "";
+  grid-area: 1/1;
+  margin: 4px;
+  border: inherit;
+  border-radius: 50%;
+}
+.custom-loader::before {
+  border-color: #0694a2 #0000;
+  animation: inherit;
+  animation-duration: 0.5s;
+  animation-direction: reverse;
+}
+.custom-loader::after {
+  margin: 16px;
+}
+
+@keyframes s6 {
+  100% {
+    transform: rotate(1turn);
   }
-}
-
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
 }

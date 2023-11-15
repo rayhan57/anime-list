@@ -1,4 +1,5 @@
 "use client";
+import { getAnimeData, getPaginationData } from "@/app/libs/fetching-data";
 import ListFilm from "@/components/ListFilm";
 import PaginationComponent from "@/components/PaginationComponent";
 import React, { useEffect, useState } from "react";
@@ -9,11 +10,14 @@ const AnimePopuler = () => {
   const [totalPage, setTotalPage] = useState([]);
 
   const getData = async () => {
-    const url = process.env.NEXT_PUBLIC_BASE_URL;
-    const response = await fetch(`${url}/top/anime?page=${currentPage}`);
-    const result = await response.json();
-    setData(result.data);
-    setTotalPage(result.pagination.last_visible_page);
+    const popularAnime = await getAnimeData(
+      "/top/anime",
+      `page=${currentPage}`
+    );
+    setData(popularAnime);
+
+    const pagination = await getPaginationData("/top/anime");
+    setTotalPage(pagination?.last_visible_page);
   };
 
   useEffect(() => {

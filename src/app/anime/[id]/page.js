@@ -1,17 +1,11 @@
+import { getAnimeData } from "@/app/libs/fetching-data";
 import CoverPhoto from "@/components/AnimeDetail/CoverPhoto";
 import MovieDetails from "@/components/AnimeDetail/MovieDetails";
 import React from "react";
 
-const fetchData = async (id) => {
-  const url = process.env.NEXT_PUBLIC_BASE_URL;
-  const response = await fetch(`${url}/anime/${id}`);
-  const result = await response.json();
-  return result.data;
-};
-
 export const generateMetadata = async ({ params }) => {
   const { id } = params;
-  const data = await fetchData(id);
+  const data = await getAnimeData(`/anime/${id}`);
 
   return {
     title: `Anime List | ${data.title}`,
@@ -20,7 +14,7 @@ export const generateMetadata = async ({ params }) => {
 
 const AnimeDetail = async ({ params }) => {
   const { id } = params;
-  const data = await fetchData(id);
+  const data = await getAnimeData(`/anime/${id}`);
 
   return (
     <>

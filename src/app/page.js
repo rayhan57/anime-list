@@ -1,12 +1,10 @@
 import React from "react";
 import ListFilm from "../components/ListFilm";
 import Link from "next/link";
+import { getAnimeData } from "./libs/fetching-data";
 
 const Section = async ({ title, linkApi, linkSeeAll }) => {
-  const url = process.env.NEXT_PUBLIC_BASE_URL;
-  const response = await fetch(`${url}${linkApi}?limit=12`);
-  const result = await response.json();
-  const data = result.data;
+  const data = await getAnimeData(linkApi, "limit=12");
 
   return (
     <>

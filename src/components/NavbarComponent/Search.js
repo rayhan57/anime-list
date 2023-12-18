@@ -16,18 +16,18 @@ const Search = () => {
   };
 
   return (
-    <div className="w-auto relative md:ms-auto mr-2">
+    <div className="w-[80%] lg:w-auto lg:ms-auto lg:mr-2 relative">
       <form onSubmit={handleSearch}>
         <input
           type="text"
           id="search"
-          className="border-none rounded-md focus:ring-1 focus:ring-black"
+          className="w-full border-none rounded-md focus:ring-1 focus:ring-black"
           placeholder="Cari film..."
           ref={searchRef}
           required
         />
         <i
-          className="fa-solid fa-magnifying-glass absolute top-3 right-3 cursor-pointer"
+          className="fa-solid fa-magnifying-glass absolute cursor-pointer bg-white rounded-md p-3 top-0 right-0"
           onClick={handleSearch}
         ></i>
       </form>

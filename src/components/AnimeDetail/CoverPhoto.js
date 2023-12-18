@@ -1,8 +1,19 @@
+import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import { getServerSession } from "next-auth";
 import React from "react";
+import ButtonFavorite from "./ButtonFavorite";
+import { checkFavoriteAnime } from "@/app/libs/fetching-data";
 
-const CoverPhoto = ({ data }) => {
+const CoverPhoto = async ({ data }) => {
+  const session = await getServerSession(authOptions);
+
   const coverPhoto = data?.images.webp.large_image_url;
   const genres = data?.genres.map((genre) => genre.name).join(" | ");
+
+  const isFavoriteAnime = await checkFavoriteAnime(
+    data.mal_id,
+    session.user.email
+  );
 
   return (
     <>
@@ -23,7 +34,20 @@ const CoverPhoto = ({ data }) => {
                 Popularity {data?.popularity}
               </p>
             </div>
-            <i className="fa-solid fa-star pl-2"></i>
+
+            <div className="pl-2">
+              <i className="fa-solid fa-star"></i>
+              {isFavoriteAnime ? (
+                <p className="text-xs md:text-sm">Favorited</p>
+              ) : (
+                <ButtonFavorite
+                  mal_id={data.mal_id}
+                  cover_photo={data.images.webp.image_url}
+                  title={data.title}
+                  user_email={session.user.email}
+                />
+              )}
+            </div>
           </div>
 
           <div className="text-[10px] md:text-xs lg:text-sm font-light">

@@ -1,0 +1,17 @@
+GET http://localhost:3000/api/favoriteAnime?user_email=rayhanb18@gmail.com
+
+###
+GET http://localhost:3000/api/favoriteAnime/88975/rayhanb18@gmail.com
+
+###
+POST http://localhost:3000/api/favoriteAnime
+
+{
+    "mal_id": "38524",
+    "cover_photo": "https://cdn.myanimelist.net/images/anime/1517/100633.webp",
+    "title": "Shingeki no Kyojin Season 3 Part 2",
+    "user_email": "rayhanb18@gmail.com"
+}
+
+###
+DELETE  http://localhost:3000/api/favoriteAnime/38524/rayhanb18@gmail.com

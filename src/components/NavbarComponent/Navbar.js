@@ -13,9 +13,18 @@ const NavbarComponent = async () => {
     <>
       <nav className="bg-slate-100 border shadow-md">
         <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-2 md:p-4">
-          <Link href="/">
-            <Image src="/logo.svg" width={120} height={100} />
-          </Link>
+          <div className="w-full lg:w-auto pb-2 lg:pb-0">
+            <Link href="/">
+              <Image
+                src="/logo.svg"
+                className="w-28 md:w-32 mx-auto"
+                width={100}
+                height={100}
+                alt="logo"
+                priority
+              />
+            </Link>
+          </div>
 
           <Search />
           <Profile user={session?.user} />

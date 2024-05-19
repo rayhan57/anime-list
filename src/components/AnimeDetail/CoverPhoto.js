@@ -10,10 +10,10 @@ const CoverPhoto = async ({ data }) => {
   const coverPhoto = data?.images.webp.large_image_url;
   const genres = data?.genres.map((genre) => genre.name).join(" | ");
 
-  const isFavoriteAnime = await checkFavoriteAnime(
-    data.mal_id,
-    session.user.email
-  );
+  // const isFavoriteAnime = await checkFavoriteAnime(
+  //   data.mal_id,
+  //   session.user.email
+  // );
 
   return (
     <>
@@ -37,7 +37,7 @@ const CoverPhoto = async ({ data }) => {
 
             <div className="pl-2">
               <i className="fa-solid fa-star"></i>
-              {isFavoriteAnime ? (
+              {/* {isFavoriteAnime ? (
                 <p className="text-xs md:text-sm">Favorited</p>
               ) : (
                 <ButtonFavorite
@@ -46,7 +46,7 @@ const CoverPhoto = async ({ data }) => {
                   title={data.title}
                   user_email={session.user.email}
                 />
-              )}
+              )} */}
             </div>
           </div>
 
